@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header" style="margin-bottom: 30px;">
+        <%- include("../partials/header")%>
+    </div>
+    <div class="container">
+        <h1 style="color: red;">Sửa thông tin nhận hàng</h1>
+        <div class="container" style="font-weight: bold;">
+            <form action="/listorder/update" method="post">
+                <input type="text" hidden class="form-control" name="user_id" value="<%= user.id%>">
+                <div class="mb-3">
+                    <label class="form-label">ID_Đơn hàng</label>
+                    <input type="text" class="form-control" name="id" value="<%= data[0].id%>" disabled>
+                    <input type="text" class="form-control" name="id" value="<%= data[0].id%>" hidden>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên đầy đủ</label>
+                    <input type="text" class="form-control" name="fullname" value="<%= data[0].fullname%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" value="<%= data[0].email%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" name="phone_number" value="<%= data[0].phone_number%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" name="address" value="<%= data[0].address%>">
+                </div>
+                <button type="submit" class="btn btn-primary">Sửa thông tin </button>
+            </form>
+        </div>
+
+
+        <div class="footer">
+            <%- include("../partials/footer")%>
+        </div>
+</body>
+
+</html>

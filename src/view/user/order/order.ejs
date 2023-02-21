@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header" style="margin-bottom: 30px;">
+        <%- include("../partials/header")%>
+    </div>
+    <div class="container">
+        <table class="table container">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">ID_Đơn hàng</th>
+                    <th scope="col">Tên khách hàng</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col">Tổng tiền</th>
+                    <th scope="col">Các chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i < data.length ; i++) { %>
+                    <tr>
+                        <th scope="row">
+                            <%= (i+1) %>
+                        </th>
+                        <td>
+                            <%= data[i].id %>
+                        </td>
+                        <td>
+                            <%= data[i].fullname %>
+                        </td>
+                        <td>
+                            <%= data[i].order_date %>
+                        </td>
+                        <td>
+                            <%= data[i].total_money %>
+                        </td>
+                        <td>
+                            <a href="/listorder/detail/<%= data[i].id %>"><button class="btn btn-primary">Xem chi
+                                    tiết</button></a>
+                            <a href="/listorder/update/<%= data[i].id %>"><button class="btn btn-primary">Sửa thông
+                                    tin</button></a>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <%- include("../partials/footer")%>
+    </div>
+</body>
+
+</html>

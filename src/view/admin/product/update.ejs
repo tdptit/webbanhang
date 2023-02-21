@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include("./head.ejs") %>
+</head>
+
+<body>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <a href="/category"><input type="button" tabindex="4" class="form-control btn btn-login"
+                        value="Danh sách sản phẩm"></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <!-- <div class="col-xs-6">
+                            <a href="/login" class="active" id="login-form-link">Đăng nhập</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="/register" id="register-form-link">Đăng kí</a>
+                        </div> -->
+                        <h1>Sửa thông tin sản phẩm</h1>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form action="/product/update" method="post" style="display: block;">
+                                <input type="hidden" name="id" class="form-control" required value="<%= data[0].id%>">
+                                <div>
+                                    <p style="color: greenyellow; font-size : 20px ">
+                                        <%= mess %>
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">ID</label>
+                                    <input type="text" name="id" class="form-control" required disabled
+                                        value="<%= data[0].id%>" value="">
+                                </div>
+                                <div style="font-size: 20px;">
+                                    <label for>Loại sản phẩm :</label>
+                                    <select name="category_id">
+                                        <% for(let i=0 ; i< data1.length ; i++) { %>
+                                            <option value="<%= data1[i].id %>">
+                                                <%= data1[i].name %>
+                                            </option>
+                                            <% } %>
+                                    </select>
+                                </div><br>
+                                <div class="form-group">
+                                    <label for="">Tên</label>
+                                    <input type="text" name="title" class="form-control" required
+                                        value="<%= data[0].title%>">
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-size: 20px;" for="">Hình ảnh</label>
+                                    <img src="/<%= data[0].image %>">
+                                    <input type="file" name="image" class="form-control" required
+                                        value="<%= data[0].image%>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Giá tiền</label>
+                                    <input type="text" name="price" class="form-control" required
+                                        value="<%= data[0].price%>">
+                                </div>
+                                <div class="form-group">
+                                    <label style="font-size: 20px;" for="">Chi tiết</label><br>
+                                    <textarea required name="description" rows="10"
+                                        cols="70"><%= data[0].description%></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" tabindex="4" class="form-control btn btn-login"
+                                                value="Sửa">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

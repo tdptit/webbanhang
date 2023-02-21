@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 550px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* On small screens, set height to 'auto' for the grid */
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav hidden-xs">
+                    <h2 style="color: blue;">
+                        <%= user.fullname %>
+                    </h2>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="/admin">Trang chủ</a></li>
+                        <li class="active"><a href="/category">Danh mục</a></li>
+                        <li><a href="/product">Sản phẩm</a></li>
+                        <li><a href="/order">Đơn hàng</a></li>
+                        <li><a href="/admin/logout">Đăng xuất</a></li>
+                    </ul>
+                    <br>
+                </div>
+                <br>
+                <div class="col-sm-9">
+                    <div class="well">
+                        <h4>Danh sách loại sản phẩm</h4>
+                    </div>
+                    <div class="well">
+                        <a href="/category/add"><button class="btn btn-success">Thêm loại sản phẩm</button></a>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Các chứng năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i=0 ; i < data.length ; i++ ) { %>
+                                    <tr>
+                                        <td>
+                                            <%= data[i].id %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].name %>
+                                        </td>
+                                        <td>
+                                            <a href="/category/update/<%= data[i].id %>"><button
+                                                    class="btn btn-primary">Sửa</button></a>
+                                            <a href="/category/delete/<%= data[i].id %>"><button
+                                                    class="btn btn-danger">Xóa</button></a>
+                                        </td>
+
+                                        <% } %>
+
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
